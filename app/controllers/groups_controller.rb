@@ -30,9 +30,11 @@ class GroupsController < ApplicationController
 
     def update
       @group = Group.find(params[:id])
-      @group = Group.update(group_params)
-
-      redirect_to groups_path, notice: 'Update sucess'
+      if @group.update(group_params)
+        redirect_to groups_path, notice: 'Update sucess'
+      else
+        render :edit
+      end
     end
 
     def destroy
@@ -46,7 +48,6 @@ class GroupsController < ApplicationController
     private
     def group_params
       params.require(:group).permit(:title,:description)
-
 
     end
 end
