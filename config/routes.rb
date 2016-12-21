@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
+
+
+  namespace :account do
+    resources :groups
+  end
   root 'groups#index'
   resources :groups do
     member do
