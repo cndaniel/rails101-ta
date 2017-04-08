@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   def update
 
     if @post.update(post_params)
-      redirect_to account_posts_path,notice:"sucess"
+      redirect_to group_path(@group),notice:"sucess"
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
   def destroy
 
       @post.destroy
-      redirect_to account_posts_path, alert:"deleted !"
+      redirect_to group_path(@group), alert:"deleted !"
 
 
   end
