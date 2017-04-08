@@ -26,6 +26,7 @@
         <th>文章内容</th>
         <th>发表者</th>
         <th>发表时间</th>
+        <th colspan="2"></th>
       </tr>
     </thead>
     <tbody>
@@ -34,6 +35,12 @@
         <td><%= post.content %></td>
         <td><%= post.user.email %></td>
         <td><%= post.created_at %></td>
+        <% if post.user == current_user %>
+        <td><%= link_to('Edit', edit_group_post_path(post.group,post), class:"btn btn-default btn-xs") %></td>
+        <td><%= link_to('Delete', group_post_path(post.group,post),method: :delete, data: {confirm:"Are you sure?"}, class:"btn btn-default btn-xs") %></td>
+        <% else %>
+        <td colspan ="2"></td>
+      <% end %>
       </tr>
       <% end %>
     </tbody>

@@ -35,7 +35,7 @@ class GroupsController < ApplicationController
 
 
       if @group.update(group_params)
-        redirect_to groups_path, notice: 'Update sucess'
+        redirect_to groups_path, notice: 'Update success'
       else
         render :edit
       end
